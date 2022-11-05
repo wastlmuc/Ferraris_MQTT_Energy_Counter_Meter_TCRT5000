@@ -144,7 +144,6 @@ int loops_actual_1 = 0;
 int loops_actual_2 = 0;
 int loops_actual_3 = 0;
 int loops_actual_4 = 0;
-const int analogInPin = A0;   // ESP8266 Analog Pin ADC0 = A0
 
 int mqttPublishTime;          // last publish time in seconds
 int mqttReconnect;            // timeout for reconnecting MQTT Server
@@ -1096,7 +1095,6 @@ void loop() {
     if (taskB.previous == 0 || (millis() - taskB.previous > taskB.rate))
     {
         taskB.previous = millis();
-        dash.data.Sensor = analogRead(analogInPin);
     }
 
     if (debouncePrevious1 == 0 || (millis() - debouncePrevious1 > configManager.data.debounce_1))
