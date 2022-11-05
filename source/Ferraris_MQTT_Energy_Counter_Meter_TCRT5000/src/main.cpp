@@ -886,10 +886,14 @@ void calcPower1(void)  {
     Serial.print(" / ");
     Serial.println(configManager.data.meter_loops_count_1);
     
+    // Check if this works!
+    // I guess this is only called, wehn loop detected
+    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1/configManager.data.meter_loops_count_1;
+    
     if(loops_actual_1 < configManager.data.meter_loops_count_1) {
       loops_actual_1++;
     } else {
-    configManager.data.meter_counter_reading_1++;
+   // configManager.data.meter_counter_reading_1++;
     loops_actual_1 = 1;
     saveConfig = true;
     }
@@ -926,10 +930,15 @@ void calcPower2(void)  {
     Serial.print(" / ");
     Serial.println(configManager.data.meter_loops_count_2);
     
+    // Check if this works!
+    // I guess this is only called, wehn loop detected
+    configManager.data.meter_counter_reading_2 = configManager.data.meter_counter_reading_2 + 1/configManager.data.meter_loops_count_2;
+    
+    
     if(loops_actual_2 < configManager.data.meter_loops_count_2) {
        loops_actual_2++;
     } else {
-    configManager.data.meter_counter_reading_2++;
+//    configManager.data.meter_counter_reading_2++;
     loops_actual_2 = 1;
     saveConfig = true;
     }
@@ -966,10 +975,15 @@ void calcPower3(void)  {
     Serial.print(" / ");
     Serial.println(configManager.data.meter_loops_count_3);
     
+    // Check if this works!
+    // I guess this is only called, wehn loop detected
+    configManager.data.meter_counter_reading_3 = configManager.data.meter_counter_reading_3 + 1/configManager.data.meter_loops_count_3;
+    
+    
     if(loops_actual_3 < configManager.data.meter_loops_count_3) {
       loops_actual_3++;
     } else {
-    configManager.data.meter_counter_reading_3++;
+    //configManager.data.meter_counter_reading_3++;
     loops_actual_3 = 1;
     saveConfig = true;
     }
@@ -1006,10 +1020,14 @@ void calcPower4(void)  {
     Serial.print(" / ");
     Serial.println(configManager.data.meter_loops_count_4);
     
+    // Check if this works!
+    // I guess this is only called, wehn loop detected
+    configManager.data.meter_counter_reading_4 = configManager.data.meter_counter_reading_4 + 1/configManager.data.meter_loops_count_4;
+    
     if(loops_actual_4 < configManager.data.meter_loops_count_4) {
       loops_actual_4++;
     } else {
-    configManager.data.meter_counter_reading_4++;
+    //configManager.data.meter_counter_reading_4++;
     loops_actual_4 = 1;
     saveConfig = true;
     }
