@@ -17,13 +17,6 @@
         "direction": "display"
     },
     {
-        "name": "WLAN_RSSI",
-        "type": "int8_t",
-        "direction": "display",
-        "display": "graph",
-        "xaxis": 50
-    },
-    {
         "name": "Impuls_Z1",
         "type": "bool",
         "direction": "display",
