@@ -14,62 +14,6 @@
   The data will be sent via MQTT to a server. The counter will be stored on the file-system as json.
   The ESP firmware update can be done via "Over-The-Air".
   
-  History
-  Ver. 0.92 (20211014)
-  - Bugfix: Interrupt Routinen bei MQTT Übertragung unterbrochen
-  - Bugfix: Interrupt Routinen beim Speichern mit littleFS unterbrochen
-  - Dashboard mit zusätzlichen Infos erweitert
-
-  Ver. 0.91 (20211011)
-  - Graphen zum Dashboard hinzugefügt
-  - ISR mit no-delay Entprellung angepasst
-  - Nachkommastellen durch fehlerhafte addition von floats entfernt
-
-  Ver. 0.9 (20210917)
-  - Graphen zum Dashboard hinzugefügt
-  - Analogwert vom Sensor wird jetzt auf dem Dashboard angezeigt
-
-  Ver. 0.8 (20210914)
-  - Bugfix Zählerroutine - jetzt per Interrupt auf alle Eingänge
-
-  Ver. 0.7 (20210822)
-  - Bugfix Zählerstand
-  - Zählerstand auf Nachkommastellen erweitert
-
-  Ver. 0.6 (20210818)
-  - Change project to iot-framework
-
-  Ver. 0.5 (20210813)
-  (Eisbaeeer)
-  - Bugfix boolean
-  - Added 3 digits after dot 
-  
-  Ver. 0.4 (20200905)
-  (Eisbaeeer)
-  - Bugfix Zähler 3 und 4 (Zählerstand)
-  - Neu: MQTT Server Port konfigurierbar
-  - Neu: MQTT publish Zeit einstellbar (1-9999 Sekunden)
-  - Blinken der internen LED aus kompatibilitätsgründen von anderen Boards entfernt (manche Boards nutzen D4 für die interne LED)
-  (ACHTUNG: mit dieser Version gehen die Zählerdaten verloren! bitte über Browser neu eintragen!)
-  - Neu: Port D4 auf D5 umgezogen! (D4 ist bei manchen Boards die interne LED
-  - Neu: Alle Zählerdaten werden im EEPROM abgespeichert.
-  Ver. 0.3 (20200824)
-  (Eisbaeeer)
-  - OTA per Webbrowser (http://.../update)
-  Ver. 0.2 (20200911)
-  (Eisbaeeer)
-  - Anpassung Entprellzeit (20ms)
-  Ver. 0.1 (20200803)
-  (Eisbaeeer)
-  * initial version
-  - Filesystem to store and read values from
-  - Wifi-Manager to connect to Wifi easy
-  - Stored values are in JSON format
-  - MQTT client to publish values
-  - HTTP page for configuration
-  - Over the air update of firmware
-  - 4 meter counter (IR-Input pins)
-  
  * Used pins
  * Internal LED       (D0) GPIO 16
  * IR Pin Messure 1   (D1) GPIO 05
