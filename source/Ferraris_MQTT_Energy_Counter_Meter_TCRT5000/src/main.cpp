@@ -1056,7 +1056,6 @@ void loop() {
         int rssi = 0;
         rssi = WiFi.RSSI();
         sprintf(dash.data.Wifi_RSSI, "%ld", rssi) ;
-        dash.data.WLAN_RSSI = WiFi.RSSI();
 
         dash.data.KWh_Zaehler1 = configManager.data.meter_counter_reading_1;
         dash.data.KWh_Zaehler2 = configManager.data.meter_counter_reading_2;
