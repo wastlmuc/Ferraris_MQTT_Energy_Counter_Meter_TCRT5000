@@ -99,8 +99,8 @@
 #define IRPIN2 D2
 #define IRPIN3 D3
 #define IRPIN4 D5
-#define RED1 LOW
-#define SILVER1 HIGH
+#define RED1 HIGH //testing!!!!!!!!!!!!!!
+#define SILVER1 LOW
 #define RED2 LOW
 #define SILVER2 HIGH
 #define RED3 LOW
