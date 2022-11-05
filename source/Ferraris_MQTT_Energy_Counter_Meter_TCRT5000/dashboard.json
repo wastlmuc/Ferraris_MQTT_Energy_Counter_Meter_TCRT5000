@@ -24,27 +24,6 @@
         "xaxis": 300
     },
     {
-        "name": "Impuls_Z2",
-        "type": "bool",
-        "direction": "display",
-        "display": "graph",
-        "xaxis": 300
-    },
-    {
-        "name": "Impuls_Z3",
-        "type": "bool",
-        "direction": "display",
-        "display": "graph",
-        "xaxis": 300
-    },
-    {
-        "name": "Impuls_Z4",
-        "type": "bool",
-        "direction": "display",
-        "display": "graph",
-        "xaxis": 300
-    },
-    {
         "name": "loops_actual_1",
         "type": "int16_t",
         "length": 5,
@@ -63,6 +42,13 @@
         "direction": "display"
     },
     {
+        "name": "Impuls_Z2",
+        "type": "bool",
+        "direction": "display",
+        "display": "graph",
+        "xaxis": 300
+    },
+       {
         "name": "loops_actual_2",
         "type": "int16_t",
         "length": 5,
@@ -81,6 +67,13 @@
         "direction": "display"
     },
     {
+        "name": "Impuls_Z3",
+        "type": "bool",
+        "direction": "display",
+        "display": "graph",
+        "xaxis": 300
+    },
+    {
         "name": "loops_actual_3",
         "type": "int16_t",
         "length": 5,
@@ -97,6 +90,13 @@
         "type": "float",
         "length": 5,
         "direction": "display"
+    },
+    {
+        "name": "Impuls_Z4",
+        "type": "bool",
+        "direction": "display",
+        "display": "graph",
+        "xaxis": 300
     },
     {
         "name": "loops_actual_4",
