@@ -53,8 +53,8 @@
         "label": "MQTT Password",
         "type": "char",
         "length": 20,
-        "value": "password",
-        "control": ""
+        "value": "",
+        "control": "password"
     },
     {
         "name": "home_assistant_auto_discovery",
