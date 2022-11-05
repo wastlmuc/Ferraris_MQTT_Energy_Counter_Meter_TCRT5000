@@ -169,7 +169,7 @@ String getTopicName(int meter, String measurement){
 String getHATopicName(String mqtt_type, char uniqueId[30]){
   String  topic = "homeassistant/";
   topic = topic + mqtt_type;
-  topic = topic +"/Ferraris";
+  topic = topic +"/Ferraris/";
   topic = topic + String(uniqueId);
   topic = topic +"/config";
 
@@ -591,7 +591,7 @@ void PublishMQTT(void) {
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
 
-      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "w", i+1);
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/w", i+1);
       topic = getTopicName(i+1, "W");
       meterName = "meter "+String(i+1)+" W";
 
@@ -617,7 +617,7 @@ void PublishMQTT(void) {
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
 
-      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "kwh", i+1);
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/kwh", i+1);
       topic = getTopicName(i+1, "Stand");
       meterName = "meter "+String(i+1)+" kWh";
       cmdTopic = getSetTopicName(i+1, "Stand");
@@ -644,7 +644,7 @@ void PublishMQTT(void) {
       discoverDocument.clear();
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
-      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "impulse", i+1);
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/impulse", i+1);
       topic = getTopicName(i+1, "impulse");
       meterName = "meter "+String(i+1);
       cmdTopic = getSetTopicName(i+1, "impulse");
@@ -671,7 +671,7 @@ void PublishMQTT(void) {
       discoverDocument.clear();
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
-      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "ukwh", i+1);
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/ukwh", i+1);
       topic = getTopicName(i+1, "UKWh");
       meterName = "meter "+String(i+1)+" rotation/kWh";
       cmdTopic = getSetTopicName(i+1, "UKWh");
@@ -698,7 +698,7 @@ void PublishMQTT(void) {
       discoverDocument.clear();
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
-      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "entprellzeit", i+1);
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/entprellzeit", i+1);
       topic = getTopicName(i+1, "Entprellzeit");
       meterName = "meter "+String(i+1)+" Entprellzeit";
       cmdTopic = getSetTopicName(i+1, "Entprellzeit");
