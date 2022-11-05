@@ -66,3 +66,7 @@ jobs:
         env:
           GHR_PATH: firmware-d1_mini.bin
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          path: firmware-d1_mini.bin
