@@ -169,7 +169,7 @@ String getTopicName(int meter, String measurement){
 String getHATopicName(String mqtt_type, char uniqueId[30]){
   String  topic = "homeassistant/";
   topic = topic + mqtt_type;
-  topic = topic +"/Ferraris/";
+  topic = topic +"/Ferraris_";
   topic = topic + String(uniqueId);
   topic = topic +"/config";
 
