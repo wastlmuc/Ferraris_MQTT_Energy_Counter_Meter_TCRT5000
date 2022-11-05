@@ -99,8 +99,8 @@
 #define IRPIN2 D2
 #define IRPIN3 D3
 #define IRPIN4 D5
-#define RED1 HIGH //testing!!!!!!!!!!!!!!
-#define SILVER1 LOW
+#define RED1 LOW
+#define SILVER1 HIGH
 #define RED2 LOW
 #define SILVER2 HIGH
 #define RED3 LOW
@@ -158,7 +158,7 @@ int value = 0;
 String getTopicName(int meter, String measurement){
   String  topic = "Ferraris/";
   topic = topic + configManager.data.messure_place;
-  topic = topic +"/Zähler";
+  topic = topic +"/meter";
   topic = topic + String(meter);
   topic = topic +"/";
   topic = topic + measurement;
@@ -586,27 +586,27 @@ void PublishMQTT(void) {
     char uniqueId[30];
     String meterName;
     for (int i = 0; i < 4; i++) {
-      // kW
+      // W
       discoverDocument.clear();
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
 
-      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "kw", i+1);
-      topic = getTopicName(i+1, "KW");
-      meterName = "Zähler "+String(i+1)+" kW";
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "w", i+1);
+      topic = getTopicName(i+1, "W");
+      meterName = "meter "+String(i+1)+" W";
 
       discoverDocument["dev_cla"] = "power";
       discoverDocument["uniq_id"] = uniqueId;
       discoverDocument["name"] = meterName;
       discoverDocument["stat_t"] = topic;
-      discoverDocument["unit_of_meas"] = "kW";
+      discoverDocument["unit_of_meas"] = "W";
       discoverDocument["val_tpl"] = "{{value}}";
 
       serializeJson(discoverDocument, discoverJson);
 
       haTopic = getHATopicName("sensor", uniqueId);
       if (!MQTTclient.publish(haTopic.c_str(), discoverJson, true)) {
-        Serial.print("failed to publish kw "+String(i+1)+" discover json:");
+        Serial.print("failed to publish w "+String(i+1)+" discover json:");
         Serial.println();
         Serial.print(discoverJson);
         Serial.println();
@@ -619,7 +619,7 @@ void PublishMQTT(void) {
 
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "kwh", i+1);
       topic = getTopicName(i+1, "Stand");
-      meterName = "Zähler "+String(i+1)+" kW/h";
+      meterName = "meter "+String(i+1)+" kWh";
       cmdTopic = getSetTopicName(i+1, "Stand");
 
       discoverDocument["dev_cla"] = "energy";
@@ -639,6 +639,33 @@ void PublishMQTT(void) {
         Serial.print(discoverJson);
         Serial.println();
       }
+      
+      // Impulse
+      discoverDocument.clear();
+      memset(discoverJson, 0, sizeof(discoverJson));
+      memset(uniqueId, 0, sizeof(uniqueId));
+      snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "impulse", i+1);
+      topic = getTopicName(i+1, "impulse");
+      meterName = "meter "+String(i+1);
+      cmdTopic = getSetTopicName(i+1, "impulse");
+
+      discoverDocument["cmd_t"] = cmdTopic;
+      discoverDocument["uniq_id"] = uniqueId;
+      discoverDocument["name"] = meterName;
+      discoverDocument["stat_t"] = topic;
+      discoverDocument["unit_of_meas"] = "1";
+      discoverDocument["val_tpl"] = "{{value}}";
+      discoverDocument["max"] = 1;
+
+      serializeJson(discoverDocument, discoverJson);
+
+      haTopic = getHATopicName("sensor", uniqueId);
+      if (!MQTTclient.publish(haTopic.c_str(), discoverJson, true)){
+        Serial.print("failed to publish impulse "+String(i+1)+" discover json:");
+        Serial.println();
+        Serial.print(discoverJson);
+        Serial.println();
+      }
 
       // Umdrehungen/kWh
       discoverDocument.clear();
@@ -646,14 +673,14 @@ void PublishMQTT(void) {
       memset(uniqueId, 0, sizeof(uniqueId));
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "ukwh", i+1);
       topic = getTopicName(i+1, "UKWh");
-      meterName = "Zähler "+String(i+1)+" Umdrehungen/kWh";
+      meterName = "meter "+String(i+1)+" rotation/kWh";
       cmdTopic = getSetTopicName(i+1, "UKWh");
 
       discoverDocument["cmd_t"] = cmdTopic;
       discoverDocument["uniq_id"] = uniqueId;
       discoverDocument["name"] = meterName;
       discoverDocument["stat_t"] = topic;
-      discoverDocument["unit_of_meas"] = "Umdrehungen/kWh";
+      discoverDocument["unit_of_meas"] = "rotation/kWh";
       discoverDocument["val_tpl"] = "{{value}}";
       discoverDocument["max"] = 512;
 
@@ -673,7 +700,7 @@ void PublishMQTT(void) {
       memset(uniqueId, 0, sizeof(uniqueId));
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "entprellzeit", i+1);
       topic = getTopicName(i+1, "Entprellzeit");
-      meterName = "Zähler "+String(i+1)+" Entprellzeit";
+      meterName = "meter "+String(i+1)+" Entprellzeit";
       cmdTopic = getSetTopicName(i+1, "Entprellzeit");
 
       discoverDocument["cmd_t"] = cmdTopic;
@@ -701,7 +728,7 @@ void PublishMQTT(void) {
   dtostrf(configManager.data.meter_counter_reading_1, 7, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
-  topic = getTopicName(1,"KW");
+  topic = getTopicName(1,"W");
   char char_Leistung_Zaehler1[6];
   dtostrf(dash.data.Leistung_Zaehler1, 4, 3, char_Leistung_Zaehler1);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler1, true);
@@ -710,6 +737,11 @@ void PublishMQTT(void) {
   char char_meter_loop_counts1[5];
   dtostrf(configManager.data.meter_loops_count_1,4,0, char_meter_loop_counts1);
   MQTTclient.publish(topic.c_str(), char_meter_loop_counts1, true);
+  
+  topic = getTopicName(1,"impulse");
+  char char_meter_impulse1[1];
+  dtostrf(dash.data.Impuls_Z1,4,0, char_meter_impulse1);
+  MQTTclient.publish(topic.c_str(), char_meter_impulse1, true);
 
   topic = getTopicName(1,"Entprellzeit");
   char char_debounce_1[4];
@@ -721,7 +753,7 @@ void PublishMQTT(void) {
   dtostrf(configManager.data.meter_counter_reading_2, 7, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
-  topic = getTopicName(2,"KW");
+  topic = getTopicName(2,"W");
   char char_Leistung_Zaehler2[6];
   dtostrf(dash.data.Leistung_Zaehler2, 4, 3, char_Leistung_Zaehler2);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler2, true);
@@ -741,7 +773,7 @@ void PublishMQTT(void) {
   dtostrf(configManager.data.meter_counter_reading_3, 7, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
-  topic = getTopicName(3,"KW");
+  topic = getTopicName(3,"W");
   char char_Leistung_Zaehler3[6];
   dtostrf(dash.data.Leistung_Zaehler3, 4, 3, char_Leistung_Zaehler3);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler3, true);
@@ -761,7 +793,7 @@ void PublishMQTT(void) {
   dtostrf(configManager.data.meter_counter_reading_4, 7, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
-  topic = getTopicName(4,"KW");
+  topic = getTopicName(4,"W");
   char char_Leistung_Zaehler4[6];
   dtostrf(dash.data.Leistung_Zaehler4, 4, 3, char_Leistung_Zaehler4);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler4, true);
@@ -836,9 +868,9 @@ void calcPower1(void)  {
   lastmillis1 = pendingmillis1;
 
   if(!startup1) {
-    dash.data.Leistung_Zaehler1 = 3600000.00 / took1 / configManager.data.meter_loops_count_1;
+    dash.data.Leistung_Zaehler1 = 3600000.00 / took1 / configManager.data.meter_loops_count_1 * 1000.00;
     Serial.print(dash.data.Leistung_Zaehler1);
-    Serial.print(" kW @ ");
+    Serial.print(" W @ ");
     Serial.print(took1);
     Serial.println("ms");
 
@@ -876,9 +908,9 @@ void calcPower2(void)  {
   lastmillis2 = pendingmillis2;
 
   if(!startup2) {
-    dash.data.Leistung_Zaehler2 = 3600000.00 / took2 / configManager.data.meter_loops_count_2;
+    dash.data.Leistung_Zaehler2 = 3600000.00 / took2 / configManager.data.meter_loops_count_2 * 1000.00;
     Serial.print(dash.data.Leistung_Zaehler2);
-    Serial.print(" kW @ ");
+    Serial.print(" W @ ");
     Serial.print(took2);
     Serial.println("ms");
 
@@ -916,9 +948,9 @@ void calcPower3(void)  {
   lastmillis3 = pendingmillis3;
 
   if(!startup3) {
-    dash.data.Leistung_Zaehler3 = 3600000.00 / took3 / configManager.data.meter_loops_count_3;
+    dash.data.Leistung_Zaehler3 = 3600000.00 / took3 / configManager.data.meter_loops_count_3*1000.00;
     Serial.print(dash.data.Leistung_Zaehler3);
-    Serial.print(" kW @ ");
+    Serial.print(" W @ ");
     Serial.print(took3);
     Serial.println("ms");
 
@@ -956,9 +988,9 @@ void calcPower4(void)  {
   lastmillis4 = pendingmillis4;
 
   if(!startup4) {
-    dash.data.Leistung_Zaehler4 = 3600000.00 / took4 / configManager.data.meter_loops_count_4;
+    dash.data.Leistung_Zaehler4 = 3600000.00 / took4 / configManager.data.meter_loops_count_4*1000.00;
     Serial.print(dash.data.Leistung_Zaehler4);
-    Serial.print(" kW @ ");
+    Serial.print(" W @ ");
     Serial.print(took4);
     Serial.println("ms");
 
