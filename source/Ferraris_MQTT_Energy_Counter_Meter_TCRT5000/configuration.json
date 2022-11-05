@@ -72,7 +72,7 @@
     {
         "name": "meter_counter_reading_1",
         "label": "KWh Zähler 1",
-        "type": "int32_t",
+        "type": "float",
         "value": "0"
     },
     {
@@ -90,7 +90,7 @@
     {
         "name": "meter_counter_reading_2",
         "label": "KWh Zähler 2",
-        "type": "int32_t",
+        "type": "float",
         "value": "0"
     },
     {
@@ -108,7 +108,7 @@
     {
         "name": "meter_counter_reading_3",
         "label": "KWh Zähler 3",
-        "type": "int32_t",
+        "type": "float",
         "value": "0"
     },
     {
@@ -126,7 +126,7 @@
     {
         "name": "meter_counter_reading_4",
         "label": "KWh Zähler 4",
-        "type": "int32_t",
+        "type": "float",
         "value": "0"
     },
     {
