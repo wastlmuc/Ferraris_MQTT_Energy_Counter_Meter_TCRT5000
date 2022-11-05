@@ -20,14 +20,14 @@
         "label": "Messplatz",
         "type": "char",
         "length": 20,
-        "value": "Messplatz"
+        "value": "consumers"
     },
     {
         "name": "mqtt_server",
         "label": "MQTT Server IP/FQDN",
         "type": "char",
         "length": 20,
-        "value": "mqttserver.local"
+        "value": "192.168.178.2"
     },
     {
         "name": "mqtt_port",
@@ -46,7 +46,7 @@
         "label": "MQTT User Name",
         "type": "char",
         "length": 20,
-        "value": "username"
+        "value": ""
     },
     {
         "name": "mqtt_password",
@@ -54,7 +54,7 @@
         "type": "char",
         "length": 20,
         "value": "password",
-        "control": "password"
+        "control": ""
     },
     {
         "name": "home_assistant_auto_discovery",
@@ -79,13 +79,13 @@
         "name": "meter_loops_count_1",
         "label": "Umdrehungen / KWh Zähler 1",
         "type": "int16_t",
-        "value": "75"
+        "value": "150"
     },
     {
         "name": "debounce_1",
         "label": "Entprellzeit Zähler 1 in ms",
         "type": "int16_t",
-        "value": "80"
+        "value": "40"
     },
     {
         "name": "meter_counter_reading_2",
