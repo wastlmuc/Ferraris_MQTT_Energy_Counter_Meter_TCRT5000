@@ -119,3 +119,4 @@ The binary supports ESP8266 with 4MB flash e.g. NodeMCU version 2+3.
 ## License
 The MIT License (MIT)
 Copyright (c) 2020 Eisbaeeer <eisbaeeer@gmail.com> 
+ 
