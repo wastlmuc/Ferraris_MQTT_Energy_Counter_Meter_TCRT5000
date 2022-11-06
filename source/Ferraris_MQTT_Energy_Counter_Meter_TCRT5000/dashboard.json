@@ -24,12 +24,6 @@
         "xaxis": 300
     },
     {
-        "name": "loops_actual_1",
-        "type": "int16_t",
-        "length": 5,
-        "direction": "display"
-    },
-    {
         "name": "KWh_Zaehler1",
         "type": "float",
         "length": 12,
@@ -47,12 +41,6 @@
         "direction": "display",
         "display": "graph",
         "xaxis": 300
-    },
-       {
-        "name": "loops_actual_2",
-        "type": "int16_t",
-        "length": 5,
-        "direction": "display"
     },
     {
         "name": "KWh_Zaehler2",
@@ -74,12 +62,6 @@
         "xaxis": 300
     },
     {
-        "name": "loops_actual_3",
-        "type": "int16_t",
-        "length": 5,
-        "direction": "display"
-    },
-    {
         "name": "KWh_Zaehler3",
         "type": "float",
         "length": 12,
@@ -97,12 +79,6 @@
         "direction": "display",
         "display": "graph",
         "xaxis": 300
-    },
-    {
-        "name": "loops_actual_4",
-        "type": "int16_t",
-        "length": 5,
-        "direction": "display"
     },
     {
         "name": "KWh_Zaehler4",
