@@ -669,7 +669,7 @@ void PublishMQTT(void) {
 
   // Meter #1
   topic = getTopicName(1,"Stand");
-  dtostrf(configManager.data.meter_counter_reading_1, 7, 3, result);
+  dtostrf(configManager.data.meter_counter_reading_1, 9, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
   topic = getTopicName(1,"W");
@@ -694,7 +694,7 @@ void PublishMQTT(void) {
 
   // Meter #2
   topic = getTopicName(2,"Stand");
-  dtostrf(configManager.data.meter_counter_reading_2, 7, 3, result);
+  dtostrf(configManager.data.meter_counter_reading_2, 9, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
   topic = getTopicName(2,"W");
@@ -714,7 +714,7 @@ void PublishMQTT(void) {
 
   // Meter #3
   topic = getTopicName(3,"Stand");
-  dtostrf(configManager.data.meter_counter_reading_3, 7, 3, result);
+  dtostrf(configManager.data.meter_counter_reading_3, 9, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
   topic = getTopicName(3,"W");
@@ -734,7 +734,7 @@ void PublishMQTT(void) {
 
   // Meter #4
   topic = getTopicName(4,"Stand");
-  dtostrf(configManager.data.meter_counter_reading_4, 7, 3, result);
+  dtostrf(configManager.data.meter_counter_reading_4, 9, 3, result);
   MQTTclient.publish(topic.c_str(), result, true);
 
   topic = getTopicName(4,"W");
@@ -832,7 +832,7 @@ void calcPower1(void)  {
     
     // Check if this works!
     // I guess this is only called, wehn loop detected
-    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1/150; //configManager.data.meter_loops_count_1;
+    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1/150.0; //configManager.data.meter_loops_count_1;
     
     if(loops_actual_1 < configManager.data.meter_loops_count_1) {
       loops_actual_1++;
