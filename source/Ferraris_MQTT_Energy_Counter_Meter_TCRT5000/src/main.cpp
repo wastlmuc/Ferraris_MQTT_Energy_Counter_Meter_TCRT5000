@@ -832,7 +832,7 @@ void calcPower1(void)  {
     
     // Check if this works!
     // I guess this is only called, wehn loop detected
-    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1/configManager.data.meter_loops_count_1;
+    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1/150; //configManager.data.meter_loops_count_1;
     
     if(loops_actual_1 < configManager.data.meter_loops_count_1) {
       loops_actual_1++;
