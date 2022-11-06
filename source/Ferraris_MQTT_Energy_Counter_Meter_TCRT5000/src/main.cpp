@@ -832,7 +832,7 @@ void calcPower1(void)  {
     
     // Check if this works!
     // I guess this is only called, wehn loop detected
-    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1/150.0; //configManager.data.meter_loops_count_1;
+    configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1.0/ configManager.data.meter_loops_count_1;
     
     if(loops_actual_1 < configManager.data.meter_loops_count_1) {
       loops_actual_1++;
@@ -876,7 +876,7 @@ void calcPower2(void)  {
     
     // Check if this works!
     // I guess this is only called, wehn loop detected
-    configManager.data.meter_counter_reading_2 = configManager.data.meter_counter_reading_2 + 1/configManager.data.meter_loops_count_2;
+    configManager.data.meter_counter_reading_2 = configManager.data.meter_counter_reading_2 + 1.0/configManager.data.meter_loops_count_2;
     
     
     if(loops_actual_2 < configManager.data.meter_loops_count_2) {
@@ -921,7 +921,7 @@ void calcPower3(void)  {
     
     // Check if this works!
     // I guess this is only called, wehn loop detected
-    configManager.data.meter_counter_reading_3 = configManager.data.meter_counter_reading_3 + 1/configManager.data.meter_loops_count_3;
+    configManager.data.meter_counter_reading_3 = configManager.data.meter_counter_reading_3 + 1.0/configManager.data.meter_loops_count_3;
     
     
     if(loops_actual_3 < configManager.data.meter_loops_count_3) {
@@ -966,7 +966,7 @@ void calcPower4(void)  {
     
     // Check if this works!
     // I guess this is only called, wehn loop detected
-    configManager.data.meter_counter_reading_4 = configManager.data.meter_counter_reading_4 + 1/configManager.data.meter_loops_count_4;
+    configManager.data.meter_counter_reading_4 = configManager.data.meter_counter_reading_4 + 1.0/configManager.data.meter_loops_count_4;
     
     if(loops_actual_4 < configManager.data.meter_loops_count_4) {
       loops_actual_4++;
@@ -1055,10 +1055,6 @@ void loop() {
         dash.data.KWh_Zaehler2 = configManager.data.meter_counter_reading_2;
         dash.data.KWh_Zaehler3 = configManager.data.meter_counter_reading_3;
         dash.data.KWh_Zaehler4 = configManager.data.meter_counter_reading_4;
-        dash.data.loops_actual_1 = loops_actual_1;
-        dash.data.loops_actual_2 = loops_actual_2;
-        dash.data.loops_actual_3 = loops_actual_3;
-        dash.data.loops_actual_4 = loops_actual_4;
                  
         reconnect();
         mqttReconnect++;      
