@@ -1,18 +1,21 @@
 [
     {
         "name": "Version",
+        "title": "Version",
         "type": "char",
         "length": 6,
         "direction": "display"
     },
     {
         "name": "Wifi_RSSI",
+        "title": "WiFi Strength",
         "type": "char",
         "length": 6,
         "direction": "display"
     },
     {
         "name": "MQTT_Connected",
+        "title": "MQTT Status",
         "type": "bool",
         "direction": "display"
     },
@@ -25,12 +28,14 @@
     },
     {
         "name": "KWh_Zaehler1",
+        "title": "Meter 1 - Total [kWh]",
         "type": "float",
         "length": 12,
         "direction": "display"
     },
     {
         "name": "Leistung_Zaehler1",
+        "title": "Meter 1 - Leistung [W]",
         "type": "float",
         "length": 5,
         "direction": "display"
@@ -44,12 +49,14 @@
     },
     {
         "name": "KWh_Zaehler2",
+        "title": "Meter 2 - Total [kWh]",
         "type": "float",
         "length": 12,
         "direction": "display"
     },
     {
         "name": "Leistung_Zaehler2",
+        "title": "Meter 2 - Leistung [W]",
         "type": "float",
         "length": 5,
         "direction": "display"
@@ -63,12 +70,14 @@
     },
     {
         "name": "KWh_Zaehler3",
+        "title": "Meter 3 - Total [kWh]",
         "type": "float",
         "length": 12,
         "direction": "display"
     },
     {
         "name": "Leistung_Zaehler3",
+        "title": "Meter 3 - Leistung [W]",
         "type": "float",
         "length": 5,
         "direction": "display"
@@ -82,12 +91,14 @@
     },
     {
         "name": "KWh_Zaehler4",
+        "title": "Meter 4 - Total [kWh]",
         "type": "float",
         "length": 12,
         "direction": "display"
     },
     {
         "name": "Leistung_Zaehler4",
+        "title": "Meter 4 - Leistung [W]",
         "type": "float",
         "length": 5,
         "direction": "display"
