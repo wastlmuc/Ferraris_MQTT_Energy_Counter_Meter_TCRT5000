@@ -536,8 +536,8 @@ void PublishMQTT(void) {
       memset(uniqueId, 0, sizeof(uniqueId));
 
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/w", i+1);
-      topic = getTopicName(i+1, "W");
-      meterName = "meter "+String(i+1)+" W";
+      topic = getTopicName(i+1, "power_W");
+      meterName = "meter"+String(i+1)+"_power_W";
 
       discoverDocument["dev_cla"] = "power";
       discoverDocument["uniq_id"] = uniqueId;
@@ -563,9 +563,9 @@ void PublishMQTT(void) {
       memset(uniqueId, 0, sizeof(uniqueId));
 
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/kwh", i+1);
-      topic = getTopicName(i+1, "Stand");
-      meterName = "meter "+String(i+1)+" kWh";
-      cmdTopic = getSetTopicName(i+1, "Stand");
+      topic = getTopicName(i+1, "energy_kWh");
+      meterName = "meter "+String(i+1)+"_energy_kWh";
+      cmdTopic = getSetTopicName(i+1, "energy_kWh");
 
       discoverDocument["dev_cla"] = "energy";
       discoverDocument["cmd_t"] = cmdTopic;
@@ -590,9 +590,8 @@ void PublishMQTT(void) {
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/impulse", i+1);
-      topic = getTopicName(i+1, "impulse");
-      meterName = "meter "+String(i+1);
-      cmdTopic = getSetTopicName(i+1, "impulse");
+      topic = getTopicName(i+1, "impulse_1");
+      meterName = "meter "+String(i+1) + "_impulse_1;
 
       discoverDocument["cmd_t"] = cmdTopic;
       discoverDocument["uniq_id"] = uniqueId;
@@ -617,9 +616,9 @@ void PublishMQTT(void) {
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/ukwh", i+1);
-      topic = getTopicName(i+1, "UKWh");
-      meterName = "meter "+String(i+1)+" rotation/kWh";
-      cmdTopic = getSetTopicName(i+1, "UKWh");
+      topic = getTopicName(i+1, "rotation_R/kWh");
+      meterName = "meter "+String(i+1)+"_rotation_R/kWh";
+      cmdTopic = getSetTopicName(i+1, "rotation_R/kWh");
 
       discoverDocument["cmd_t"] = cmdTopic;
       discoverDocument["uniq_id"] = uniqueId;
@@ -644,9 +643,9 @@ void PublishMQTT(void) {
       memset(discoverJson, 0, sizeof(discoverJson));
       memset(uniqueId, 0, sizeof(uniqueId));
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/entprellzeit", i+1);
-      topic = getTopicName(i+1, "Entprellzeit");
-      meterName = "meter "+String(i+1)+" Entprellzeit";
-      cmdTopic = getSetTopicName(i+1, "Entprellzeit");
+      topic = getTopicName(i+1, "debounce_ms");
+      meterName = "meter "+String(i+1)+"_debounce_ms";
+      cmdTopic = getSetTopicName(i+1, "debounce_ms");
 
       discoverDocument["cmd_t"] = cmdTopic;
       discoverDocument["uniq_id"] = uniqueId;
