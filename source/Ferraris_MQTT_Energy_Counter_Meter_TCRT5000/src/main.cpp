@@ -591,7 +591,7 @@ void PublishMQTT(void) {
       memset(uniqueId, 0, sizeof(uniqueId));
       snprintf_P(uniqueId, sizeof(uniqueId), PSTR("%06X_%s_%d"), ESP.getChipId(), "/impulse", i+1);
       topic = getTopicName(i+1, "impulse_1");
-      meterName = "meter "+String(i+1) + "_impulse_1;
+      meterName = "meter "+String(i+1) + "_impulse_1";
 
       discoverDocument["cmd_t"] = cmdTopic;
       discoverDocument["uniq_id"] = uniqueId;
