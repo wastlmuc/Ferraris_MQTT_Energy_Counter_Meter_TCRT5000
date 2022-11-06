@@ -834,7 +834,7 @@ void calcPower1(void)  {
     // I guess this is only called, wehn loop detected
     configManager.data.meter_counter_reading_1 = configManager.data.meter_counter_reading_1 + 1.0/ configManager.data.meter_loops_count_1;
     
-    if(loops_actual_1 < configManager.data.meter_loops_count_1) {
+    if(loops_actual_1 < configManager.data.meter_loops_count_1 * 10) {
       loops_actual_1++;
     } else {
    // configManager.data.meter_counter_reading_1++;
@@ -879,7 +879,7 @@ void calcPower2(void)  {
     configManager.data.meter_counter_reading_2 = configManager.data.meter_counter_reading_2 + 1.0/configManager.data.meter_loops_count_2;
     
     
-    if(loops_actual_2 < configManager.data.meter_loops_count_2) {
+    if(loops_actual_2 < configManager.data.meter_loops_count_2 * 10) {
        loops_actual_2++;
     } else {
 //    configManager.data.meter_counter_reading_2++;
@@ -924,7 +924,7 @@ void calcPower3(void)  {
     configManager.data.meter_counter_reading_3 = configManager.data.meter_counter_reading_3 + 1.0/configManager.data.meter_loops_count_3;
     
     
-    if(loops_actual_3 < configManager.data.meter_loops_count_3) {
+    if(loops_actual_3 < configManager.data.meter_loops_count_3 * 10) {
       loops_actual_3++;
     } else {
     //configManager.data.meter_counter_reading_3++;
@@ -968,7 +968,7 @@ void calcPower4(void)  {
     // I guess this is only called, wehn loop detected
     configManager.data.meter_counter_reading_4 = configManager.data.meter_counter_reading_4 + 1.0/configManager.data.meter_loops_count_4;
     
-    if(loops_actual_4 < configManager.data.meter_loops_count_4) {
+    if(loops_actual_4 < configManager.data.meter_loops_count_4 * 10) {
       loops_actual_4++;
     } else {
     //configManager.data.meter_counter_reading_4++;
