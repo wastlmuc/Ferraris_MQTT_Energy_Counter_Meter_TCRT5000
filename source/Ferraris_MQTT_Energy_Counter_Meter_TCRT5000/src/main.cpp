@@ -545,6 +545,7 @@ void PublishMQTT(void) {
       discoverDocument["stat_t"] = topic;
       discoverDocument["unit_of_meas"] = "W";
       discoverDocument["val_tpl"] = "{{value}}";
+      discoverDocument["max"] = 7000;
 
       serializeJson(discoverDocument, discoverJson);
 
