@@ -677,17 +677,17 @@ void PublishMQTT(void) {
   char char_Leistung_Zaehler1[6];
   dtostrf(dash.data.Leistung_Zaehler1, 4, 3, char_Leistung_Zaehler1);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler1, true);
+  
+  topic = getTopicName(1,"impulse");
+  char char_meter_impulse1[1];
+  dtostrf(dash.data.Impuls_Z1,1,0, char_meter_impulse1);
+  MQTTclient.publish(topic.c_str(), char_meter_impulse1, true);
 
   topic = getTopicName(1,"UKWh");
   char char_meter_loop_counts1[5];
   dtostrf(configManager.data.meter_loops_count_1,4,0, char_meter_loop_counts1);
   MQTTclient.publish(topic.c_str(), char_meter_loop_counts1, true);
   
-  topic = getTopicName(1,"impulse");
-  char char_meter_impulse1[1];
-  dtostrf(dash.data.Impuls_Z1,4,0, char_meter_impulse1);
-  MQTTclient.publish(topic.c_str(), char_meter_impulse1, true);
-
   topic = getTopicName(1,"Entprellzeit");
   char char_debounce_1[4];
   dtostrf(configManager.data.debounce_1,3,0, char_debounce_1);
@@ -703,6 +703,11 @@ void PublishMQTT(void) {
   dtostrf(dash.data.Leistung_Zaehler2, 4, 3, char_Leistung_Zaehler2);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler2, true);
 
+  topic = getTopicName(2,"impulse");
+  char char_meter_impulse2[1];
+  dtostrf(dash.data.Impuls_Z1,1,0, char_meter_impulse2);
+  MQTTclient.publish(topic.c_str(), char_meter_impulse2, true);
+  
   topic = getTopicName(2,"UKWh");
   char char_meter_loop_counts2[5];
   dtostrf(configManager.data.meter_loops_count_2,4,0, char_meter_loop_counts2);
@@ -722,6 +727,11 @@ void PublishMQTT(void) {
   char char_Leistung_Zaehler3[6];
   dtostrf(dash.data.Leistung_Zaehler3, 4, 3, char_Leistung_Zaehler3);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler3, true);
+  
+  topic = getTopicName(3,"impulse");
+  char char_meter_impulse3[1];
+  dtostrf(dash.data.Impuls_Z3,1,0, char_meter_impulse3);
+  MQTTclient.publish(topic.c_str(), char_meter_impulse3, true);
 
   topic = getTopicName(3,"UKWh");
   char char_meter_loop_counts3[5];
@@ -742,6 +752,11 @@ void PublishMQTT(void) {
   char char_Leistung_Zaehler4[6];
   dtostrf(dash.data.Leistung_Zaehler4, 4, 3, char_Leistung_Zaehler4);
   MQTTclient.publish(topic.c_str(), char_Leistung_Zaehler4, true);
+  
+  topic = getTopicName(4,"impulse");
+  char char_meter_impulse4[1];
+  dtostrf(dash.data.Impuls_Z4,1,0, char_meter_impulse4);
+  MQTTclient.publish(topic.c_str(), char_meter_impulse4, true);
 
   topic = getTopicName(4,"UKWh");
   char char_meter_loop_counts4[5];
